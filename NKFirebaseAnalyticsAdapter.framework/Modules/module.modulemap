@@ -1,0 +1,6 @@
+framework module NKFirebaseAnalyticsAdapter {
+  umbrella header "NKFirebaseAnalyticsAdapter.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module NKRemoteConfigAdapter {
+  umbrella header "NKRemoteConfigAdapter.h"
+
+  export *
+  module * { export * }
+}

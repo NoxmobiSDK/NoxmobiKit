@@ -1,0 +1,6 @@
+framework module NoxmobiKit {
+  umbrella header "NoxmobiKit.h"
+
+  export *
+  module * { export * }
+}
