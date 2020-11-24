@@ -12,6 +12,31 @@ srcVer=${currentLine#*\"}
 srcVer=${srcVer%%\"*}
 echo "$srcVer"
 
+#一顿Git操作
+echo "\n🔥查看改动 git status："
+gitStatusRes=`git status`
+echo "$gitStatusRes"
+
+echo "\n🔥添加到暂存区 git add . ："
+gitAddRes=`git add .`
+echo "$gitAddRes"
+
+echo "\n🔥提交 git commit："
+gitCommitRes=`git commit -m v$srcVer`
+echo "$gitCommitRes"
+
+echo "\n🔥推送到远程 git push："
+gitPushRes=`git push origin main`
+echo "$gitPushRes"
+
+echo "\n🔥打本地标签 git tag："
+gitTagRes=`git tag $srcVer`
+echo "$gitTagRes"
+
+echo "\n🔥推送标签 git tag："
+gitPushTagRes=`git push origin $srcVer`
+echo "$gitPushTagRes"
+
 # ===============验证语法============================
 # 语法检查的原命令
 srcCommand="pod spec lint $PodName.podspec"

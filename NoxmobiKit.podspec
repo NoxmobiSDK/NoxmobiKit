@@ -9,32 +9,40 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "NoxmobiKit"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.1" # Mark
   spec.summary      = "A complete set of monetization solution tools provided by Nox."
   spec.homepage     = "https://github.com/NoxmobiSDK/NoxmobiKit"
   spec.license      = "MIT"
   spec.author       = { "nox_chong" => "gaochong@bignox.com" }
   spec.platform     = :ios, "10.0"
   spec.source       = { :git => "https://github.com/NoxmobiSDK/NoxmobiKit.git", :tag => "#{spec.version}" }
-  spec.source_files = "NoxmobiKit.framework/Headers/*.{h}"
   spec.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC' }
-  spec.ios.vendored_frameworks = 'NoxmobiKit.framework'
   spec.requires_arc = true
+  
+  spec.subspec 'NoxmobiKitCore' do |ss|
+    ss.source_files = "NoxmobiKit.framework/Headers/*.{h}"
+    ss.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC' }
+    ss.ios.vendored_frameworks = 'NoxmobiKit.framework'
+    ss.requires_arc = true
+  end
 
   spec.subspec 'FirebaseAnalytics' do |ss|
     ss.source_files = "NKFirebaseAnalyticsAdapter.framework/Headers/*.{h}"
     ss.ios.vendored_frameworks = 'NKFirebaseAnalyticsAdapter.framework'
     ss.dependency 'Firebase/Analytics'
+    ss.dependency 'NoxmobiKit/NoxmobiKitCore'
   end
 
   spec.subspec 'FirebaseRemoteConfig' do |ss|
     ss.source_files = "NKRemoteConfigAdapter.framework/Headers/*.{h}"
     ss.ios.vendored_frameworks = 'NKRemoteConfigAdapter.framework'
     ss.dependency 'Firebase/RemoteConfig'
+    ss.dependency 'NoxmobiKit/NoxmobiKitCore'
   end
 
   spec.subspec 'FirebaseCrashlytics' do |ss|
     ss.dependency 'Firebase/Crashlytics'
+    ss.dependency 'NoxmobiKit/NoxmobiKitCore'
   end
 
 end
