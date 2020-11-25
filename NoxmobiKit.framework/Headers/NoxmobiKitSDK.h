@@ -7,7 +7,7 @@
 //  
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import <NoxmobiKit/NKConst.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -54,5 +54,29 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSNumber *)rcNumberValueForKey:(NSString *)key;
 
 @end
+
+#pragma mark - FacebookLogin & FacebookAnalytics
+@interface NoxmobiKitSDK (FacebookLoginAnalytics)
+
+/// 在AppDelegate中实现此方法，传入相应参数
++ (void)app:(UIApplication *)app openURL:(NSURL *)url options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options;
+
+/// 获取FBSDKLoginButton对象；可以放置在页面上需要的位置；登录动作由FBSDKLoginButton完成；
++ (UIButton *)fetchFBLoginButton;
+
+/// 发起Facebook登录动作，仅限于自定义登录按钮
++ (void)fbLoginAction:(UIViewController *)vc handler:(void(^)(BOOL loginSuccess, NSError * _Nullable error))handler;
+
+/// 退出登录
++ (void)fbLogOut;
+
+/// 查询Facebook是否已登录
++ (BOOL)fbIsLogin;
+
+/// 查询当前登录的Facebook用户ID
++ (NSString *)fetchFBUserID;
+
+@end
+
 
 NS_ASSUME_NONNULL_END

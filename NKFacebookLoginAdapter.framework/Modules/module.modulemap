@@ -1,0 +1,6 @@
+framework module NKFacebookLoginAdapter {
+  umbrella header "NKFacebookLoginAdapter.h"
+
+  export *
+  module * { export * }
+}

@@ -8,7 +8,7 @@
 //
 
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import <NoxmobiKit/NKConst.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -59,6 +59,29 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)configStringValueForKey:(NSString *)key;
 /// 取数字类型的值
 - (NSNumber *)configNumberValueForKey:(NSString *)key;
+
+@end
+
+#pragma mark - FacebookLogin
+@protocol NKFacebookLoginAdapterProtocol <NKAdapterProtocol>
+
+/// 在AppDelegate中实现此方法，传入相应参数
+- (void)app:(UIApplication *)app openURL:(NSURL *)url options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options;
+
+/// 获取FBSDKLoginButton对象；可以放置在页面上需要的位置；登录动作由FBSDKLoginButton完成；
+- (UIButton *)fetchFBLoginButton;
+
+/// 发起Facebook登录动作，仅限于自定义登录按钮
+- (void)fbLoginAction:(UIViewController *)vc handler:(void(^)(BOOL loginSuccess, NSError * _Nullable error))handler;
+
+/// 退出登录
+- (void)fbLogOut;
+
+/// 查询Facebook是否已登录
+- (BOOL)fbIsLogin;
+
+/// 查询当前登录的Facebook用户ID
+- (NSString *)fetchFBUserID;
 
 @end
 

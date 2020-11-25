@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "NoxmobiKit"
-  spec.version      = "1.0.1" # Mark
+  spec.version      = "1.0.2" # Mark
   spec.summary      = "A complete set of monetization solution tools provided by Nox."
   spec.homepage     = "https://github.com/NoxmobiSDK/NoxmobiKit"
   spec.license      = "MIT"
@@ -42,7 +42,17 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'FirebaseCrashlytics' do |ss|
     ss.dependency 'Firebase/Crashlytics'
+    # 需要在Objective-C中调用[FIRApp configure]来启动FirebaseCrashlytics实例
     ss.dependency 'NoxmobiKit/NoxmobiKitCore'
   end
+
+  spec.subspec 'FacebookLogin' do |ss|
+    ss.source_files = "NKFacebookLoginAdapter.framework/Headers/*.{h}"
+    ss.ios.vendored_frameworks = 'NKFacebookLoginAdapter.framework'
+    ss.dependency 'FBSDKLoginKit'
+    ss.dependency 'NoxmobiKit/NoxmobiKitCore'
+  end
+
+  
 
 end
