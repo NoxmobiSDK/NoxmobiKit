@@ -38,6 +38,8 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Firebase/RemoteConfig
 @interface NoxmobiKitSDK (RemoteConfig)
 
+/// 设置RC最小刷新间隔。默认为0，单位：秒(s)
++ (void)setupRemoteConfigMinimumFetchInterval:(NSTimeInterval)interval;
 /// 使用PlistFile设置默认配置，例如：文件名为NoxDefault.plist，则[NoxmobiKitSDK setRCDefaultPlistFileName:@"NoxDefault"].
 + (void)setRCDefaultPlistFileName:(NSString *)plistName;
 /// 用一组键值对设置默认配置；key须为NSString类型，value须为NSString或NSNumber类型
@@ -55,17 +57,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@protocol NKFacebookLoginProtocol;
 #pragma mark - FacebookLogin & FacebookAnalytics
 @interface NoxmobiKitSDK (FacebookLoginAnalytics)
 
-/// 在AppDelegate中实现此方法，传入相应参数
+/// 在AppDelegate中实现此方法，传入相应参数以启用Facebook核心组件
 + (void)app:(UIApplication *)app openURL:(NSURL *)url options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options;
 
 /// 获取FBSDKLoginButton对象；可以放置在页面上需要的位置；登录动作由FBSDKLoginButton完成；
 + (UIButton *)fetchFBLoginButton;
 
 /// 发起Facebook登录动作，仅限于自定义登录按钮
-+ (void)fbLoginAction:(UIViewController *)vc handler:(void(^)(BOOL loginSuccess, NSError * _Nullable error))handler;
++ (void)fbLogin:(UIViewController *)vc;
 
 /// 退出登录
 + (void)fbLogOut;
@@ -76,7 +79,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// 查询当前登录的Facebook用户ID
 + (NSString *)fetchFBUserID;
 
+/// 监听登录和登出结果
++ (void)setLoginDelegate:(id<NKFacebookLoginProtocol>)delegate;
+
 @end
 
+#pragma mark - Adjust
+@interface NoxmobiKitSDK (Adjust)
+
+/// 记录事件
++ (void)adjustLogEventForToken:(NSString *)token;
+
+@end
 
 NS_ASSUME_NONNULL_END

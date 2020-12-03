@@ -21,6 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// 初始化Adapter
 - (instancetype)initWithConnector:(_Nullable id<NKConnectorProtocol>)connector;
 
+@optional
+/// App启动
+- (void)didFinishLaunchingWithNotification:(NSNotification *)notification;
+
 @end
 
 
@@ -45,6 +49,8 @@ NS_ASSUME_NONNULL_BEGIN
  使用RC前必须先配置好Firebase(FIRApp)，是控制台输出的提示
  */
 
+/// 设置RC最小刷新间隔。默认为0，单位：秒(s)
+- (void)setupRemoteConfigMinimumFetchInterval:(NSTimeInterval)interval;
 /// 设置默认配置，使用PlistFile
 - (void)setDefaultConfigPlistFileName:(NSString *)plistName;
 /// 设置默认配置，用一组键值对；key须为NSString类型，value须为NSString或NSNumber类型
@@ -64,7 +70,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - FacebookLogin
 @protocol NKFacebookLoginAdapterProtocol <NKAdapterProtocol>
-
+@optional
 /// 在AppDelegate中实现此方法，传入相应参数
 - (void)app:(UIApplication *)app openURL:(NSURL *)url options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options;
 
@@ -72,7 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIButton *)fetchFBLoginButton;
 
 /// 发起Facebook登录动作，仅限于自定义登录按钮
-- (void)fbLoginAction:(UIViewController *)vc handler:(void(^)(BOOL loginSuccess, NSError * _Nullable error))handler;
+- (void)fbLogin:(UIViewController *)vc;
 
 /// 退出登录
 - (void)fbLogOut;
@@ -82,6 +88,35 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 查询当前登录的Facebook用户ID
 - (NSString *)fetchFBUserID;
+
+@end
+
+@protocol NKFacebookLoginProtocol <NSObject>
+@optional
+
+/// Adapter回调通知给SDK
+@property (nonatomic, weak) id<NKFacebookLoginProtocol> delegate;
+
+/// 登录成功
+- (void)facebookDidLogin;
+
+/// 登录失败
+- (void)facebookFailedToLogin:(NSError *)error;
+
+/// 退出登录成功
+- (void)facebookDidLogout;
+
+@end
+
+
+#pragma mark - Adjust
+@protocol NKAdjustAdapterProtocol <NKAdapterProtocol>
+
+/// 初始化Adjust SDK。AppToken为AM给定的值，sandboxEnable表示是够启用沙盒环境，默认为NO不启用。
+- (void)adjustInitWithAppToken:(NSString *)appToken sandboxEnable:(BOOL)enable;
+
+/// 记录事件
+- (void)adjustLogEventForToken:(NSString *)token;
 
 @end
 

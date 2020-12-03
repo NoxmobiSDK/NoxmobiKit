@@ -9,7 +9,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define NOXMOBI_KIT_VER @"1.0.2"
+#define NOXMOBI_KIT_VER @"1.1.0"
 
 // In this header, you should import all the public headers of your framework using statements like #import <NoxmobiKit/PublicHeader.h>
 

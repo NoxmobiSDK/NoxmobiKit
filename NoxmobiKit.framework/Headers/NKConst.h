@@ -33,6 +33,13 @@ typedef NS_ENUM(NSInteger, NKRCFetchAndActivateStatus) {
     NKRCFetchAndActivateStatusError
 };
 
+// Facebook登录成功的通知
+extern NSString *const NKFacebookLoginNotification;
+// Facebook退出登录的通知
+extern NSString *const NKFacebookLogoutNotification;//
+// Facebook 用户ID
+extern NSString *const NKFacebookUserIDNotificationParameterKey;
+
 @end
 
 NS_ASSUME_NONNULL_END

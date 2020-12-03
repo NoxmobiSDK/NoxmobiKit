@@ -1,0 +1,6 @@
+framework module NKAdjustAdapter {
+  umbrella header "NKAdjustAdapter.h"
+
+  export *
+  module * { export * }
+}
