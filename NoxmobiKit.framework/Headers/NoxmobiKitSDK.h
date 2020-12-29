@@ -61,8 +61,8 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - FacebookLogin & FacebookAnalytics
 @interface NoxmobiKitSDK (FacebookLoginAnalytics)
 
-/// 在AppDelegate中实现此方法，传入相应参数以启用Facebook核心组件
-+ (void)app:(UIApplication *)app openURL:(NSURL *)url options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options;
+/////// 在AppDelegate中实现此方法，传入相应参数以启用Facebook核心组件
+//+ (void)app:(UIApplication *)app openURL:(NSURL *)url options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options;
 
 /// 获取FBSDKLoginButton对象；可以放置在页面上需要的位置；登录动作由FBSDKLoginButton完成；
 + (UIButton *)fetchFBLoginButton;
