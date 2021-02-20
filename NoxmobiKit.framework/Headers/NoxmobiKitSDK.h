@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
  name: Should contain 1 to 24 alphanumeric characters or underscores and must start with an alphabetic character.
  string: Values can be up to 36 characters long.
  */
-- (void)firebaseSetupUserProperty:(NSString *)name string:(NSString *)string;
++ (void)firebaseSetupUserProperty:(NSString *)name string:(NSString *)string;
 
 @end
 
