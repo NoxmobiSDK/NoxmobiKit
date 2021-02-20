@@ -32,6 +32,13 @@ NS_ASSUME_NONNULL_BEGIN
 */
 + (void)firebaseLogEventName:(NSString *)name parameters:(nullable NSDictionary<NSString *, id> *)parameters;
 
+/**
+ Firebase设置UserProperty
+ name: Should contain 1 to 24 alphanumeric characters or underscores and must start with an alphabetic character.
+ string: Values can be up to 36 characters long.
+ */
+- (void)firebaseSetupUserProperty:(NSString *)name string:(NSString *)string;
+
 @end
 
 
