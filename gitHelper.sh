@@ -18,5 +18,5 @@ gitCommitRes=`git commit -m $srcVer`
 echo "$gitCommitRes"
 
 echo "\n🔥推送到远程 git push："
-gitPushRes=`git push origin master`
+gitPushRes=`git push origin main`
 echo "$gitPushRes"
