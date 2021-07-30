@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "NoxmobiKit"
-  spec.version      = "1.2.5" # Mark
+  spec.version      = "1.3.0" # Mark
   spec.summary      = "A complete set of monetization solution tools provided by Nox."
   spec.homepage     = "https://github.com/NoxmobiSDK/NoxmobiKit"
   spec.license      = "MIT"
