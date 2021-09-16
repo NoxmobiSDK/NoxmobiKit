@@ -12,3 +12,8 @@
 // In this header, you should import all the public headers of your framework using statements like #import <NKRemoteConfigAdapter/PublicHeader.h>
 
 
+@interface NKRemoteConfigAdapter : NSObject
+
++ (NSString *)sdkVersion;
+
+@end

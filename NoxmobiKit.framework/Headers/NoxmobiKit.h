@@ -9,7 +9,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define NOXMOBI_KIT_VER @"1.3.0"
+#define NOXMOBI_KIT_VER @"1.3.1"
 
 // In this header, you should import all the public headers of your framework using statements like #import <NoxmobiKit/PublicHeader.h>
 
@@ -18,3 +18,9 @@
 #import <NoxmobiKit/NKAdapterProtocol.h>
 #import <NoxmobiKit/NKConnectorProtocol.h>
 #import <NoxmobiKit/NKConst.h>
+
+@interface NoxmobiKit : NSObject
+
++ (NSString *)sdkVersion;
+
+@end
